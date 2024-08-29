@@ -1,5 +1,5 @@
 
-typedef enum  {lectura,escritura.reset  } tipo_trans;
+typedef enum  {lectura,escritura,reset  } tipo_trans;
 // Transaccion: Transacciones que entran y salen de la fifo
 class trans_fifo #(parameter width = 16);
     rand int retardo;
