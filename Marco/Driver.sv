@@ -1,4 +1,4 @@
-class driver #(parameter width = 16;); //preguntar por que aca no se usa depth
+class driver #(parameter width = 16); //preguntar por que aca no se usa depth
     virtual fifo_if #(.width(width))vif;
     trans_fifo_mbx agnt_drv_mbx;
     trans_fifo_mbx drv_chkr_mbx;
