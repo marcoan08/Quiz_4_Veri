@@ -42,7 +42,7 @@ class driver #(parameter width = 16); //preguntar por que aca no se usa depth
                     vif.push = 1;
                     transaction.tiempo = $time;
                     drv_chkr_mbx.put(transaction);
-                    transaction.print)("Driver: Transaccion ejecutada");
+                    transaction.print("Driver: Transaccion ejecutada");
                 end
 
                 reset: begin
