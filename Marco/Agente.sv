@@ -33,7 +33,7 @@ class agent #(parameter width = 16, parameter depth = 8);
                             agnt_drv_mbx.put(transaccion);
                         end
 
-                        for(int i=0; i < num_transacciones, i++)begin
+                        for(int i=0; i < num_transacciones; i++)begin
                             transaccion = new;  
                             transaccion.max_retardo = max_retardo;
                             transaccion.randomize(); //preguntar si sobreescribe Max_retardo o si solo randomiza todas las que no llame acá.
