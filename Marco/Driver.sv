@@ -7,7 +7,7 @@ class driver #(parameter width = 16); //preguntar por que aca no se usa depth
     task run ();
         $display("[%g] El driver fue inicializado", $time);
         @(posedge vif.clock);
-        vif .rst = 1;
+        vif.rst = 1;
         @(posedge vif.clk);
         forever begin
             trans_fifo #(.width(width)) transaction;

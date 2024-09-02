@@ -66,7 +66,7 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                 reset: begin
                     contador_auxiliar = emul_fifo.size();
                     for (int i = 0; i < contador_auxiliar; i++) begin
-                        auxilizar = emul_fifo.pop_front();
+                        auxiliar = emul_fifo.pop_front();
                         to_sb.clean();
                         to_sb.dato_enviado = auxilizar.dato;
                         to_sb.tiempo_push = auxiliar.tiempo;
