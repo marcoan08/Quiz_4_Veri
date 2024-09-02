@@ -46,7 +46,7 @@ class ambiente #(parameter width = 16, parameter depth = 8);
     endfunction
 
     virtual task run();
-        $display("[%g] El ambiente fue inicializado");
+        $display("[%g] El ambiente fue inicializado",$time);
         fork
             driver_inst.run();
             checker1_inst.run();
