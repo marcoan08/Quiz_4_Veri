@@ -6,7 +6,6 @@ class ambiente #(parameter width = 16, parameter depth = 8);
     checker1 #(.width(width),.depth(depth)) checker1_inst;
     score_board #(.width(width)) scoreboard_inst;
     agent #(.width(width),.depth(depth)) agent_inst;
-
     //declaro la interfase virtual que contecta el DUT
 
     virtual fifo_if #(.width(width)) _if;
