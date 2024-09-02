@@ -72,7 +72,7 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                         to_sb.tiempo_push = auxiliar.tiempo;
                         to_sb.reset = 1;
                         to_sb.print ("Checker: Reset");
-                        chkr_sb_mbx(to_sb);
+                        chkr_sb_mbx.put(to_sb);
                     end
                 end
 
