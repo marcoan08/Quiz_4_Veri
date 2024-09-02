@@ -12,7 +12,7 @@ class test #(parameter width = 16, parameter depth = 8);
     ambiente #(.width(width), .depth(depth)) ambiente_inst;
 
     //definicion de laa interface a la que se conecta el DUT
-    virtual fifo_if #(.width) _if;
+    virtual fifo_if #(.width(width)) _if;
 
     function new:
         test_sb_mbx = new();
