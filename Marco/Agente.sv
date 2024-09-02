@@ -1,5 +1,5 @@
 class agent #(parameter width = 16, parameter depth = 8);
-    trans_fifo_mbx agnt_drv_mbx
+    trans_fifo_mbx agnt_drv_mbx;
     comando_test_agent_mbx test_agent_mbx;
     int num_transacciones; 
     int max_retardo;
@@ -14,7 +14,7 @@ class agent #(parameter width = 16, parameter depth = 8);
         max_retardo = 10;
     endfunction
 
-    task run
+    task run;
         $display("[%g] EL agente fue inicializado", $time);
         forever begin
             #1
