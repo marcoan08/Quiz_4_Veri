@@ -4,6 +4,7 @@
 `include "Driver.sv"
 `include "Checker.sv"
 `include "Score_Board.sv"
+`include "Agente.sv"
 `include "Ambiente.sv"
 `include "Test.sv"
 
