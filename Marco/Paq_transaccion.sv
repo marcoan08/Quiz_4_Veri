@@ -13,7 +13,7 @@ class trans_fifo #(parameter width = 16);
         retardo > 0;
     }
 
-    function new(int ret = 0, bit [width-1:0 dto=0] dto, int tmp = 0, tipo_trans tpo = lectura, int mx_rtrd = 10 );
+    function new(int ret = 0, bit [width-1:0] dto = 0, int tmp = 0, tipo_trans tpo = lectura, int mx_rtrd = 10 );
 
         this.retardo = ret;
         this.dato = dto;
