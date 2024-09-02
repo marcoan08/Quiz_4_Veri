@@ -23,7 +23,7 @@ class score_board #(parameter width = 16); //preguntar por que no se usa depth
                     retardo_total = retardo_total + transaccion_entrante.latencia;
                     transacciones_completadas++;
                 end
-                scoreboard.push_back(transaccion_entrante)
+                scoreboard.push_back(transaccion_entrante);
             end else begin
                 if(test_sb_mbx.num() > 0) begin
                     test_sb_mbx.get(orden);
