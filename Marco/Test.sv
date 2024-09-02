@@ -9,7 +9,7 @@ class test #(parameter width = 16, parameter depth = 8);
     solicitud_sb instr_sb;
 
     //definicion del ambiente de prueba
-    ambiente #(.width(width)), (.depth(depth)) ambiente_inst;
+    ambiente #(.width(width), .depth(depth)) ambiente_inst;
 
     //definicion de laa interface a la que se conecta el DUT
     virtual fifo_if #(.width) _if;

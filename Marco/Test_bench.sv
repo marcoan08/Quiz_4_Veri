@@ -13,7 +13,7 @@ module test_bench;
     reg clk;
     parameter width = 16;
     parameter depth = 8;
-    Test #(.depth(depth)), (.width(width)) t0;
+    Test #(.depth(depth), .width(width)) t0;
 
     fifo_if #(.width(width)) _if(.clk(clk));
     always #5 clk = ~clk;
