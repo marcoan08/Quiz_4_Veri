@@ -67,7 +67,7 @@ class agent #(parameter width = 16, parameter depth = 8);
                             transaccion.max_retardo = max_retardo;
                             transaccion.randomize();
                             transaccion.print("Agente: transaccion creada");
-                            agnt_drv_mbx(transaccion);
+                            agnt_drv_mbx.put(transaccion);
                         end
                     end
                 endcase  
