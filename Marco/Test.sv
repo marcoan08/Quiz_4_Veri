@@ -14,7 +14,7 @@ class test #(parameter width = 16, parameter depth = 8);
     //definicion de laa interface a la que se conecta el DUT
     virtual fifo_if #(.width(width)) _if;
 
-    function new:
+    function new;
         test_sb_mbx = new();
         test_agent_mbx = new();
 
