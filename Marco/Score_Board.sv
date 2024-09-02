@@ -41,7 +41,7 @@ class score_board #(parameter width = 16); //preguntar por que no se usa depth
                             for(int i = 0; i < tamano_sb; i++)begin
                                 auxiliar_trans = scoreboard.pop_front;
                                 auxiliar_trans.print("SB_Report");
-                                auxiliar_array.push_back(auxiliar_trans)
+                                auxiliar_array.push_back(auxiliar_trans);
                             end
                             scoreboard = auxiliar_array;
                         end
