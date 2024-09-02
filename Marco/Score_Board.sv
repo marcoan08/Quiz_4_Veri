@@ -12,7 +12,7 @@ class score_board #(parameter width = 16); //preguntar por que no se usa depth
     int transacciones_completadas = 0;
     int retardo_total = 0;
 
-    task
+    task run;
         $display ("[%g] El scoreboard fue inicializado",$time);
         forever begin
             #5
