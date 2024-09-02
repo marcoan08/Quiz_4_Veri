@@ -19,7 +19,7 @@ class driver #(parameter width = 16); //preguntar por que aca no se usa depth
             espera = 0;
             @(posedge vif.clk)
             agnt_drv_mbx.get(transaction) 
-            transaction.print ("Driver: Transaccion recibida");
+            transaction.print ("Driver: Transaccionn recibida");
             $display("Transacciones pendientes en el mbx agnt_drv = %g", agnt_drv_mbx.num());
 
             while (espera < transaction.retardo) begin
