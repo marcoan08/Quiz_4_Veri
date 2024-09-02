@@ -5,7 +5,7 @@ class ambiente #(parameter width = 16, parameter depth = 8);
     driver #(.width(width)) driver_inst;
     checker1 #(.width(width),.depth(depth)) checker1_inst;
     score_board #(.width(width)) scoreboard_inst;
-    agent #(.width(width),.depth(depth)) agent_inst; //aca hay un error que no entiendo 
+    agent #(.width(width),.depth(depth)) agent_inst;
 
     //declaro la interfase virtual que contecta el DUT
 
@@ -37,7 +37,7 @@ class ambiente #(parameter width = 16, parameter depth = 8);
 
         driver_inst.vif = _if;
         driver_inst.drv_chkr_mbx = drv_chkr_mbx;
-        driver_inst.agnt_drv_mbx = agnt_drv_mbx
+        driver_inst.agnt_drv_mbx = agnt_drv_mbx;
         checker1_inst.drv_chkr_mbx = drv_chkr_mbx;
         checker1_inst.chkr_sb_mbx = chkr_sb_mbx;
         scoreboard_inst.chkr_sb_mbx = chkr_sb_mbx;
