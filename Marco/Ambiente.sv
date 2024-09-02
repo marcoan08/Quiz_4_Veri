@@ -15,7 +15,7 @@ class ambiente #(parameter width = 16, parameter depth = 8);
     trans_fifo_mbx agnt_drv_mbx;
     trans_fifo_mbx drv_chkr_mbx; 
     trans_sb_mbx chkr_sb_mbx;
-    comando_test_agent_mbx test_sb_mbx;
+    comando_test_sb_mbx test_sb_mbx;
     comando_test_agent_mbx test_agent_mbx;
 
     function new();
@@ -40,7 +40,7 @@ class ambiente #(parameter width = 16, parameter depth = 8);
         checker1_inst.drv_chkr_mbx = drv_chkr_mbx;
         checker1_inst.chkr_sb_mbx = chkr_sb_mbx;
         scoreboard_inst.chkr_sb_mbx = chkr_sb_mbx;
-        scoreboard_inst.test_sb_mbx = test_sb_mbx;
+        scoreboard_inst.test_sb_mbx = test_sb_mbx; //arreglar
         agent_inst.test_agent_mbx = test_agent_mbx;
         agent_inst.agnt_drv_mbx =agnt_drv_mbx;
     endfunction
