@@ -36,6 +36,24 @@ class trans_fifo #(parameter width = 16);
 endclass //trans_fifo #(parameter width = 16)
 
 
+//****************Interface******************************************************
+
+interface fifo_if #(parameter width = 16)(
+
+input clk
+);
+
+logic rst;
+logic pndng;
+logic full;
+logic push;
+logic pop;
+logic [width-1:0] dato_in;
+logic [width-1:0] dato_out;
+
+endinterface
+
+
 //objeto de transaccion usado en el scoreboard
 
 class trans_sb #(parameter width = 16);
@@ -100,21 +118,5 @@ typedef mailbox #(instrucciones_agente) comando_test_agent_mbx;
 
 //Definicion de mailboxes de tipo definifo trans_fifo para comunicar interfases.
 
-//****************Interface******************************************************
-
-interface fifo_if #(parameter width = 16)(
-
-input clk
-);
-
-logic rst;
-logic pndng;
-logic full;
-logic push;
-logic pop;
-logic [width-1:0] dato_in;
-logic [width-1:0] dato_out;
-
-endinterface
 
 
