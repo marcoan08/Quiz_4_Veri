@@ -3,9 +3,9 @@ class ambiente #(parameter width = 16, parameter depth = 8);
     //declaracion de los componentes del ambiente
 
     driver #(.width(width)) driver_inst;
-    checker1 #(.width(width)), (.depth(depth)) checker1_inst;
+    checker1 #(.width(width), .depth(depth)) checker1_inst;
     score_board #(.width(width)) scoreboard_inst;
-    agent #(.width(width)), (.depth(depth)) agent_inst;
+    agent #(.width(width), .depth(depth)) agent_inst;
 
     //declaro la interfase virtual que contecta el DUT
 
@@ -17,7 +17,7 @@ class ambiente #(parameter width = 16, parameter depth = 8);
     trans_fifo_mbx drv_chkr_mbx; 
     trans_sb_mbx chkr_sb_mbx;
     comando_test_agent_mbx test_sb_mbx;
-    comando_test_agent_mbx test_agent_mbx
+    comando_test_agent_mbx test_agent_mbx;
 
     function new();
         //crea los mailbox
