@@ -73,7 +73,7 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                             to_sb.tiempo_pop = transaccion.dato;
                             to_sb.completado = 1;
                             to_sb.calc_latencia();
-                            to_sb.print("Checker: Transaccion Completada");
+                            to_sb.print("ESCRITURA_LECTURA Checker: Transaccion Completada");
                             chkr_sb_mbx.put(to_sb);
                         end else begin
                             transaccion.print ("Chercker: Error el dato de la transaccion no calza con el esperado");
@@ -96,7 +96,7 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                         chkr_sb_mbx.put(to_sb);
                         emul_fifo.push_back(transaccion);
                     end else begin
-                        transaccion.print("Checker: Escritura");
+                        transaccion.print("LECTURA_ESCRITURA Checker: Escritura completada");
                         emul_fifo.push_back(transaccion);
                     end //hasta acá la comprobación de la escritura
                 end
