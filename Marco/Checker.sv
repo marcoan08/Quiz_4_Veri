@@ -24,7 +24,7 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
             to_sb.clean();
             case(transaccion.tipo)
 
-                lectura: begin
+                lectura: begin //pop
                    if(0 !== emul_fifo.size()) begin
                         auxiliar = emul_fifo.pop_front();
                         if (transaccion.dato == auxiliar.dato)begin
@@ -48,7 +48,7 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                    end
                 end
 
-                escritura: begin
+                escritura: begin //push
                     if(emul_fifo.size() == depth)begin
                         auxiliar = emul_fifo.pop_front();
                         to_sb.dato_enviado = auxiliar.dato;
@@ -61,6 +61,44 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                         transaccion.print("Checker: Escritura");
                         emul_fifo.push_back(transaccion);
                     end
+                end
+
+                escritura_lectura: begin
+                    
+                    if(0 !== emul_fifo.size()) begin
+                        auxiliar = emul_fifo.pop_front();
+                        if (transaccion.dato == auxiliar.dato)begin
+                            to_sb.dato_enviado = auxiliar.dato;
+                            to_sb.tiempo_push = auxiliar.tiempo;
+                            to_sb.tiempo_pop = transaccion.dato;
+                            to_sb.completado = 1;
+                            to_sb.calc_latencia();
+                            to_sb.print("Checker: Transaccion Completada");
+                            chkr_sb_mbx.put(to_sb);
+                        end else begin
+                            transaccion.print ("Chercker: Error el dato de la transaccion no calza con el esperado");
+                            $display("Dato_leido= %h, Dato_Esperado = %h", transaccion.dato, auxiliar.dato);
+                            $finish;
+                        end
+                   end else begin
+                        to_sb.tiempo_pop = transaccion.tiempo;
+                        to_sb.underflow = 1;
+                        to_sb.print("Chercker: Underflow");
+                        chkr_sb_mbx.put(to_sb);
+                   end //Hasta acá la comprobación de la lectura
+
+                    if(emul_fifo.size() == depth)begin
+                        auxiliar = emul_fifo.pop_front();
+                        to_sb.dato_enviado = auxiliar.dato;
+                        to_sb.tiempo_push = auxiliar.tiempo;
+                        to_sb.overflow = 1;
+                        to_sb.print ("Chercker: Overflow");
+                        chkr_sb_mbx.put(to_sb);
+                        emul_fifo.push_back(transaccion);
+                    end else begin
+                        transaccion.print("Checker: Escritura");
+                        emul_fifo.push_back(transaccion);
+                    end //hasta acá la comprobación de la escritura
                 end
 
                 reset: begin
