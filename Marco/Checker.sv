@@ -37,9 +37,9 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                             chkr_sb_mbx.put(to_sb);
                         end else begin
                             transaccion.print ("Chercker: Error el dato de la transaccion no calza con el esperado");
+                            $display("Dato_leido= %h, Dato_Esperado = %h", transaccion.dato, auxiliar.dato);
+                            $finish;
                         end
-                        $display("Dato_leido= %h, Dato_Esperado = %h", transaccion.dato, auxiliar.dato);
-                        $finish;
                    end else begin
                         to_sb.tiempo_pop = transaccion.tiempo;
                         to_sb.underflow = 1;
