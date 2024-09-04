@@ -65,24 +65,6 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
 
                 escritura_lectura: begin
 
-                    if(0 !== emul_fifo.size()) begin
-                        auxiliar = emul_fifo.pop_front();
-                        if (transaccion.dato == auxiliar.dato)begin
-                            to_sb.dato_enviado = auxiliar.dato;
-                            to_sb.tiempo_push = auxiliar.tiempo;
-                            to_sb.tiempo_pop = transaccion.dato;
-                            to_sb.completado = 1;
-                            to_sb.calc_latencia();
-                            to_sb.print("ESCRITURA_LECTURA Checker: Transaccion Completada");
-                            chkr_sb_mbx.put(to_sb);
-                        end else begin
-                            to_sb.tiempo_pop = transaccion.tiempo;
-                            to_sb.underflow = 1;
-                            to_sb.print("Chercker: Underflow");
-                            chkr_sb_mbx.put(to_sb);
-                        end //Hasta acá la comprobación de la lectura
-                    end
-
                     if(emul_fifo.size() == depth)begin
                         auxiliar = emul_fifo.pop_front();
                         to_sb.dato_enviado = auxiliar.dato;
@@ -92,9 +74,27 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                         chkr_sb_mbx.put(to_sb);
                         emul_fifo.push_back(transaccion);
                     end else begin
-                        transaccion.print("Checker:LECTURA_ESCRITURA: Escritura completada");
+                        transaccion.print("Checker:ESCRITURA_LECTURA: Escritura completada");
                         emul_fifo.push_back(transaccion);
                     end //hasta acá la comprobación de la escritura
+
+                     if(0 !== emul_fifo.size()) begin
+                        auxiliar = emul_fifo.pop_front();
+                        if (transaccion.dato == auxiliar.dato)begin
+                            to_sb.dato_enviado = auxiliar.dato;
+                            to_sb.tiempo_push = auxiliar.tiempo;
+                            to_sb.tiempo_pop = transaccion.dato;
+                            to_sb.completado = 1;
+                            to_sb.calc_latencia();
+                            to_sb.print("Checker: ElECTURA_ ESCRITURA: Lecutra completada");
+                            chkr_sb_mbx.put(to_sb);
+                        end else begin
+                            to_sb.tiempo_pop = transaccion.tiempo;
+                            to_sb.underflow = 1;
+                            to_sb.print("Chercker: Underflow");
+                            chkr_sb_mbx.put(to_sb);
+                        end //Hasta acá la comprobación de la lectura
+                    end
                 end
 
                 reset: begin
