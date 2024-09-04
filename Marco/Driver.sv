@@ -46,17 +46,14 @@ class driver #(parameter width = 16); //preguntar por que aca no se usa depth
                 end
 
                 escritura_lectura: begin
-                    vif.push = 1;
-                    transaction.tiempo = $time;
-                    drv_chkr_mbx.put(transaction);
-                    transaction.print("Driver: Escritura realizada"); //hasta acá la escritura
 
                     transaction.dato = vif.dato_out;
-                    transaction.tiempo = $time;
                     @(posedge vif.clk);
+                    transaction.tiempo = $time;
+                    vif.push = 1;
                     vif.pop = 1;
                     drv_chkr_mbx.put(transaction);
-                    transaction.print("Driver: Lectura realizada");
+                    transaction.print("Driver: LECTURA_ESCRITURA realizada");
                 end
 
                 reset: begin
