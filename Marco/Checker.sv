@@ -86,7 +86,7 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                             to_sb.tiempo_pop = transaccion.dato;
                             to_sb.completado = 1;
                             to_sb.calc_latencia();
-                            to_sb.print("Checker: ElECTURA_ ESCRITURA: Lecutra completada");
+                            to_sb.print("Checker: LECTURA_ ESCRITURA: Lecutra completada");
                             chkr_sb_mbx.put(to_sb);
                         end else begin
                             to_sb.tiempo_pop = transaccion.tiempo;
@@ -95,6 +95,7 @@ class checker1 #(parameter width = 16, parameter depth = 8); //preguntar por que
                             chkr_sb_mbx.put(to_sb);
                         end //Hasta acá la comprobación de la lectura
                     end
+                    auxiliar = emul_fifo.pop_front();
                 end
 
                 reset: begin
